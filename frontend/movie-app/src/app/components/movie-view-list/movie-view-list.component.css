@@ -1,0 +1,8 @@
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px auto;
+  max-width: 500px;
+  cursor: pointer;
+}
