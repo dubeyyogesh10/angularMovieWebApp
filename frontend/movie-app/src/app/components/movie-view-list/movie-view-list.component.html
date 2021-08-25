@@ -1,13 +1,14 @@
 <div class="container">
-    <div class="card-deck" *ngFor="let item of movieList">
+    <div class="row">
+        <div class="card-deck col-lg-3" *ngFor="let item of movieList">
 
-        <div class="card mb-4 ">
-            <img src={{item.Poster}} class="img-thumbnail" alt="..." (click)="getMovieDetails(item.imdbID)">
-            <div class="card-body">
-                <h5 class="card-title">{{item.Title}}</h5>
-                <p class="card-text"></p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <div class="card">
+                <img src={{item.Poster}} class="img-thumbnail" alt="..." (click)="getMovieDetails(item.imdbID)">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.Title}}</h5>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
