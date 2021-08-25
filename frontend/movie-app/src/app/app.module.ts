@@ -1,26 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MovieViewListComponent } from './components/movie-view-list/movie-view-list.component';
-import { Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AppComponent,
+    path: 'details/:id',
+    component: MovieDetailsComponent,
   },
   {
-    path: 'movie-details',
+    path: 'home',
+    component: MovieViewListComponent,
+  },
+  {
+    path: '',
     component: MovieViewListComponent,
   },
 ];
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, MovieViewListComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    MovieViewListComponent,
+    MovieDetailsComponent,
+  ],
+  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie.model';
 import * as data from './../../../assets/movies.json';
 
@@ -8,7 +9,7 @@ import * as data from './../../../assets/movies.json';
   styleUrls: ['./movie-view-list.component.css'],
 })
 export class MovieViewListComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   movieList: Movie[] = [];
   ngOnInit(): void {
     this.loadTempData();
@@ -20,7 +21,7 @@ export class MovieViewListComponent implements OnInit {
     console.log(data);
   };
 
-  getMovieDetails = (imdbID: string) => {
-    console.log(imdbID);
+  getMovieDetails = (id: string) => {
+    this.router.navigate(['details', id]);
   };
 }
