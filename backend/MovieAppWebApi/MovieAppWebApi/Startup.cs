@@ -1,4 +1,5 @@
 using InfraCore.Database.DataContext;
+using InfraCore.Database.DataContext.DbDataIntializer;
 using InfraCore.Database.DataContext.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -65,6 +66,8 @@ namespace MovieAppWebApi
             {
                 endpoints.MapControllers();
             });
+
+            AppDbInitializer.Seed(app);
         }
     }
 }

@@ -63,6 +63,22 @@ namespace MovieAppWebApi.Controllers
         }
 
         /// <summary>
+        /// The Post.
+        /// </summary>
+        /// <param name="movie">The movie<see cref="Movie"/>.</param>
+        /// <returns>The <see cref="Task{ActionResult{bool}}"/>.</returns>
+        [HttpPost("multiple")]
+        public async Task<ActionResult<bool>> Postmultiple([FromBody] Movie[] movie)
+        {
+            Task task = null;
+            foreach (var item in movie)
+            {
+                await this.service.AddMovie(item).ConfigureAwait(false);
+            }
+            return Ok();
+        }
+
+        /// <summary>
         /// The Put.
         /// </summary>
         /// <param name="id">The id<see cref="int"/>.</param>
