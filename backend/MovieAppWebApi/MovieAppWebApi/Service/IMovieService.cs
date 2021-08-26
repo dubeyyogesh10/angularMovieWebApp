@@ -9,7 +9,7 @@ namespace MovieAppWebApi.Service
     /// <summary>
     /// Defines the <see cref="IMovieService" />.
     /// </summary>
-    interface IMovieService
+    public interface IMovieService
     {
         /// <summary>
         /// The GetMovieById.
@@ -29,6 +29,6 @@ namespace MovieAppWebApi.Service
         /// </summary>
         /// <param name="movie">The movie<see cref="Movie"/>.</param>
         /// <returns>The <see cref="Task{Movie}"/>.</returns>
-        Task<Movie> AddMovie(Movie movie);
+        Task<bool> AddMovie(Movie movie);
     }
 }

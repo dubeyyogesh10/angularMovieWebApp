@@ -2,6 +2,7 @@
 
 namespace MovieAppWebApi.Service
 {
+    using InfraCore.Database.DataContext.Interface;
     using InfraCore.Models;
     using System;
     using System.Collections.Generic;
@@ -12,14 +13,20 @@ namespace MovieAppWebApi.Service
     /// </summary>
     public class MovieService : IMovieService
     {
+        private readonly IDbClient dbClient;
+
+        public MovieService(IDbClient dbClient)
+        {
+            this.dbClient = dbClient;
+        }
         /// <summary>
         /// The AddMovie.
         /// </summary>
         /// <param name="movie">The movie<see cref="Movie"/>.</param>
         /// <returns>The <see cref="Task{Movie}"/>.</returns>
-        public Task<Movie> AddMovie(Movie movie)
+        public async Task<bool> AddMovie(Movie movie)
         {
-            throw new NotImplementedException();
+            return await dbClient.AddMovie(movie).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -27,18 +34,18 @@ namespace MovieAppWebApi.Service
         /// </summary>
         /// <param name="id">The id<see cref="int"/>.</param>
         /// <returns>The <see cref="Task{Movie}"/>.</returns>
-        public Task<Movie> GetMovieById(int id)
+        public async Task<Movie> GetMovieById(int id)
         {
-            throw new NotImplementedException();
+            return await dbClient.GetMovie(id).ConfigureAwait(false);
         }
 
         /// <summary>
         /// The GetMovies.
         /// </summary>
         /// <returns>The <see cref="Task{List{Movie}}"/>.</returns>
-        public Task<List<Movie>> GetMovies()
+        public async Task<List<Movie>> GetMovies()
         {
-            throw new NotImplementedException();
+            return await dbClient.GetMovies().ConfigureAwait(false);
         }
     }
 }

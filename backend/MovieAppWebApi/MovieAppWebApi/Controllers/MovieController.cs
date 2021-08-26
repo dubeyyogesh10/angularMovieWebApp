@@ -1,47 +1,86 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿// Authored By Yogesh, File Name : MovieController.cs ,Date 26-08-2021
 
 namespace MovieAppWebApi.Controllers
 {
+    using InfraCore.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using MovieAppWebApi.Service;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Defines the <see cref="MovieController" />.
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class MovieController : ControllerBase
     {
-        // GET: api/<MovieController>
+        /// <summary>
+        /// Defines the service.
+        /// </summary>
+        private readonly IMovieService service;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MovieController"/> class.
+        /// </summary>
+        /// <param name="service">The service<see cref="IMovieService"/>.</param>
+        public MovieController(IMovieService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// The Get.
+        /// </summary>
+        /// <returns>The <see cref="Task{ActionResult{List{Movie}}}"/>.</returns>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<List<Movie>>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(await this.service.GetMovies().ConfigureAwait(false));
         }
 
-        // GET api/<MovieController>/5
+        /// <summary>
+        /// The Get.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="Task{ActionResult{Movie}}"/>.</returns>
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Movie>> Get([Required] int id)
         {
-            return "value";
+            return Ok(await this.service.GetMovieById(id).ConfigureAwait(false));
         }
 
-        // POST api/<MovieController>
+        /// <summary>
+        /// The Post.
+        /// </summary>
+        /// <param name="movie">The movie<see cref="Movie"/>.</param>
+        /// <returns>The <see cref="Task{ActionResult{bool}}"/>.</returns>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<bool>> Post([FromBody] Movie movie)
         {
+            return Ok(await this.service.AddMovie(movie).ConfigureAwait(false));
         }
 
-        // PUT api/<MovieController>/5
+        /// <summary>
+        /// The Put.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <param name="value">The value<see cref="string"/>.</param>
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+            //TODO
         }
 
-        // DELETE api/<MovieController>/5
+        /// <summary>
+        /// The Delete.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            //TODO
         }
     }
 }
