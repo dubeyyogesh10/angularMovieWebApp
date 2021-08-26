@@ -1,8 +1,5 @@
 ﻿// Authored By Yogesh, File Name : MovieSoundEffects.cs ,Date 26-08-2021
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace InfraCore.Models
 {
     /// <summary>
@@ -20,6 +17,9 @@ namespace InfraCore.Models
         /// </summary>
         public string SoundEffects { get; set; }
 
+        /// <summary>
+        /// Gets or sets the MovieimdbID.
+        /// </summary>
         public int MovieimdbID { get; set; }
     }
 }

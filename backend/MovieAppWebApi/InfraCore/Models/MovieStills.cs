@@ -1,8 +1,5 @@
 ﻿// Authored By Yogesh, File Name : MovieStills.cs ,Date 26-08-2021
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace InfraCore.Models
 {
     /// <summary>
@@ -10,9 +7,10 @@ namespace InfraCore.Models
     /// </summary>
     public class MovieStills
     {
+        /// <summary>
+        /// Gets or sets the Id.
+        /// </summary>
         public int Id { get; set; }
-
-
 
         /// <summary>
         /// Gets or sets the Stills.
@@ -20,7 +18,7 @@ namespace InfraCore.Models
         public string Stills { get; set; }
 
         /// <summary>
-        /// Gets or sets the imdbID.
+        /// Gets or sets the MovieimdbID.
         /// </summary>
         public int MovieimdbID { get; set; }
     }
