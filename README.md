@@ -11,6 +11,8 @@
   #### 1. add-migration newMigration
   #### 2. update-database
   #### 3.Microsoft Doc-https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/?tabs=vs
+  
+### 5. Data will seed in to table for first time when you launch the application.
 
 ## Web API (.Net Core 3.1)
 ### 1. Run MovieAppWebApi in visual studio OR Go to MovieAppWebApi folder where "MovieAppWebApi.csproj" is located and open CMD/bash to run following commands.
