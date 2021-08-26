@@ -24,9 +24,8 @@
    #### npm install
    #### ng serve --o
 
-#### Tech stack and patterns - .Net Core WebAPI, Code First EF CORE,Angular 11, Swagger, MediatR CQRS Pattern, Respository, Async calls, Notification using toastr service.
-
-####  Basic Contact App functionality with ADD, DELETE, EDIT, VIEW option.
+#### Tech stack and patterns - .Net Core WebAPI, Code First EF CORE,Angular 11, Swagger, Respository, Async calls.
+####  Basic functionality has implment and rest is work in progress
   
 ##### Requirement : Net 3.1 core SDK, Angular CLI 11, MS SQL Server Express
 
