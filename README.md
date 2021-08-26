@@ -1,4 +1,4 @@
-# Angular Movie Web App Practice Project 
+# Angular/Dotnet Movie Web App Practice Project 
 # BUILD Status 
 [![.NET](https://github.com/dubeyyogesh10/angularMovieWebApp/actions/workflows/dotnet.yml/badge.svg)](https://github.com/dubeyyogesh10/angularMovieWebApp/actions/workflows/dotnet.yml)
 
