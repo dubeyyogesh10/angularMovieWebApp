@@ -21,5 +21,3 @@ jobs:
       run: dotnet restore "backend/MovieAppWebApi/MovieAppWebApi"
     - name: Build
       run: dotnet build --no-restore "backend/MovieAppWebApi/MovieAppWebApi"
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
