@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie.model';
-import * as data from './../../../assets/movies.json';
-
+import { MovieServiceService } from 'src/app/service/movie-service.service';
 @Component({
   selector: 'app-movie-view-list',
   templateUrl: './movie-view-list.component.html',
   styleUrls: ['./movie-view-list.component.css'],
 })
 export class MovieViewListComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private service: MovieServiceService) {}
   movieList: Movie[] = [];
   ngOnInit(): void {
     this.loadTempData();
   }
 
   loadTempData = () => {
-    this.movieList = data.movies as Movie[];
+    this.service.getMoviesFromApi().subscribe(
+      (res) => {
+        this.movieList = res as Movie[];
+        this.service.movieList = this.movieList;
+        console.log('service movielist ' + this.service.movieList);
+      },
+      (err) => {
+        console.log('Error -> ' + err);
+      }
+    );
     console.log(this.movieList);
-    console.log(data);
   };
 
   getMovieDetails = (id: string) => {

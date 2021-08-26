@@ -1,27 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Movie } from '../models/movie.model';
-import * as data from './../../assets/movies.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MovieServiceService {
   movieList: Movie[] = [];
-  constructor(private httpClient: HttpClient) {}
+  readonly baseUrl = 'http://localhost:5000/api/Movie';
+
+  constructor(private httpClient: HttpClient) {
+    this.getMoviesFromApi();
+  }
 
   getMovieDetails = (): Movie[] => {
-    this.movieList = data.movies as Movie[];
     console.log(this.movieList);
     return this.movieList;
   };
 
   getMovie = (id: string): Movie => {
-    this.movieList = data.movies as Movie[];
-    console.log(this.movieList);
-    //let movie: Movie = {};
-    let movie = this.movieList.find((x) => x.imdbID === id)!;
+    console.log('get ovie by id' + this.movieList);
+    // let movie: Movie = {};
+    const movie = this.movieList.find((x) => x.imdbID == id);
     console.log(movie);
     return movie;
+  };
+
+  getMoviesFromApi = () => {
+    return this.httpClient.get<Movie[]>(this.baseUrl);
   };
 }

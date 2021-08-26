@@ -3,9 +3,9 @@
         <div class="card-deck col-lg-3" *ngFor="let item of movieList">
 
             <div class="card">
-                <img src={{item.Poster}} class="img-thumbnail" alt="..." (click)="getMovieDetails(item.imdbID)">
+                <img src={{item.poster}} class="img-thumbnail" alt="..." (click)="getMovieDetails(item.imdbID)">
                 <div class="card-body">
-                    <h5 class="card-title">{{item.Title}}</h5>
+                    <h5 class="card-title">{{item.title}}</h5>
                 </div>
             </div>
         </div>
