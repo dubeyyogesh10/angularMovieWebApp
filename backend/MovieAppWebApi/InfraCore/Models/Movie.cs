@@ -3,12 +3,21 @@
 namespace InfraCore.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// Defines the <see cref="Movie" />.
     /// </summary>
     public class Movie
     {
+        /// <summary>
+        /// Gets or sets the imdbID.
+        /// </summary>
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int imdbID { get; set; }
+
         /// <summary>
         /// Gets or sets the Language.
         /// </summary>
@@ -32,22 +41,17 @@ namespace InfraCore.Models
         /// <summary>
         /// Gets or sets the SoundEffects.
         /// </summary>
-        public List<string> SoundEffects { get; set; }
+        public List<MovieSoundEffects> SoundEffects { get; set; }
 
         /// <summary>
         /// Gets or sets the Stills.
         /// </summary>
-        public List<string> Stills { get; set; }
+        public List<MovieStills> Stills { get; set; }
 
         /// <summary>
         /// Gets or sets the Title.
         /// </summary>
         public string Title { get; set; }
-
-        /// <summary>
-        /// Gets or sets the imdbID.
-        /// </summary>
-        public string imdbID { get; set; }
 
         /// <summary>
         /// Gets or sets the listingType.
