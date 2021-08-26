@@ -1,4 +1,4 @@
-# angularMovieWebApp
+# Angular Movie Web App Practice Project 
 # BUILD Status 
 
 # TO RUN in Local Environment
