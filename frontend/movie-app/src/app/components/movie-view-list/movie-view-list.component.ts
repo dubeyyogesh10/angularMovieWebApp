@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie.model';
-import * as data from './../../../assets/movies.json';
+import { MovieServiceService } from 'src/app/service/movie-service.service';
 
 @Component({
   selector: 'app-movie-view-list',
@@ -9,16 +9,24 @@ import * as data from './../../../assets/movies.json';
   styleUrls: ['./movie-view-list.component.css'],
 })
 export class MovieViewListComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router,  private service: MovieServiceService) {}
   movieList: Movie[] = [];
   ngOnInit(): void {
+    this.service.getMovieDetails();
     this.loadTempData();
   }
 
   loadTempData = () => {
-    this.movieList = data.movies as Movie[];
+    this.service.getSharedMovieList().subscribe(
+      (res) => {
+        this.movieList = res as Movie[];
+        console.log('service movielist ' + this.service.movieList);
+      },
+      (err) => {
+        console.log('Error -> ' + err);
+      }
+    );
     console.log(this.movieList);
-    console.log(data);
   };
 
   getMovieDetails = (id: string) => {
