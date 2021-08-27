@@ -13,13 +13,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {}
 
   OnSearch = () => {
-    console.log('inside search ' + this.serachvalue);
-    let test = this.service.movieList.filter((x) =>
-      x.title.includes(this.serachvalue)
+    const filterMovies = this.service.serviceMovieList.filter((x) =>
+      x.title.toLowerCase().includes(this.serachvalue.toLowerCase())
     );
 
-    test.forEach((i) => {
-      console.log('inside print  ' + i.title + test.length);
-    });
+    this.service.AddMovieToSharedList(filterMovies);
   };
 }

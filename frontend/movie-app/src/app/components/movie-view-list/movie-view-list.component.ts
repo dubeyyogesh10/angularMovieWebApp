@@ -11,15 +11,15 @@ export class MovieViewListComponent implements OnInit {
   constructor(private router: Router, private service: MovieServiceService) {}
   movieList: Movie[] = [];
   ngOnInit(): void {
+    this.service.getMoviesFromApi();
     this.loadTempData();
   }
 
   loadTempData = () => {
-    this.service.getMoviesFromApi().subscribe(
+    this.service.getSharedMovieList().subscribe(
       (res) => {
         this.movieList = res as Movie[];
-        this.service.movieList = this.movieList;
-        console.log('service movielist ' + this.service.movieList);
+        console.log('service movielist ' + this.service.serviceMovieList);
       },
       (err) => {
         console.log('Error -> ' + err);
