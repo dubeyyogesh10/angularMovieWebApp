@@ -5,7 +5,7 @@
 # TO RUN in Local Environment
 ## Database setup for EF Core
 ### 1. Open the "MovieAppWebApi.Api.sln" file in visual studio
-### 2. Open "appsettings.json" and update your server name and integrated if required.
+### 2. Open "appsettings.json" and update your server name and use integrated security if required.
 ### 3. Open package Manager console. Switch the "InfraCore" project (option available in console package Manager itself, at the top).
 ### 4. Run follwing Commands
     #### 1. add-migration newMigration
